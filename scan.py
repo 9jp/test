@@ -1,26 +1,17 @@
-import requests
+import socket
 
 def scan_website(url):
-    """Scans a website for vulnerabilities."""
+    """Scans a website for its IP address and system name."""
 
-    # Send a GET request to the website.
-    response = requests.get(url)
+    # Get the IP address of the website.
+    ip_address = socket.gethostbyname(url)
 
-    # Check the status code of the response.
-    if response.status_code == 200:
-        # If the status code is 200, then the website is up and running.
-        print("Website is up and running.")
+    # Get the system name of the website.
+    system_name = socket.gethostbyaddr(ip_address)[0]
 
-        # Get the content of the website.
-        content = response.content
-
-        # Scan the content of the website for vulnerabilities.
-        vulnerabilities = []
-        for vulnerability in vulnerabilities:
-            print("Vulnerability found:", vulnerability)
-    else:
-        # If the status code is not 200, then the website is not up and running.
-        print("Website is not up and running.")
+    # Print the IP address and system name of the website.
+    print("IP address:", ip_address)
+    print("System name:", system_name)
 
 if __name__ == "__main__":
     # Get the URL of the website to scan.
