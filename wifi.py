@@ -1,9 +1,8 @@
-
 import os
 
 def hack_wifi():
   
-print("Hacks the Wi-Fi network.")
+
 
 # Get the output of the "iwconfig" command.
 output = os.popen("iwconfig").read()
