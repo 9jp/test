@@ -1,4 +1,4 @@
-```python
+
 import os
 
 def hack_wifi():
@@ -32,4 +32,4 @@ print("You are not connected to Wi-Fi.")
 if __name__ == "__main__":
 # Hack the Wi-Fi network.
 hack_wifi()
-```
+
