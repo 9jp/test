@@ -1,6 +1,6 @@
 import socket
 
-url = "example.com"
+url = input("Enter the website link: ")
 
 def get_ip(url):
     ip_address = socket.gethostbyname(url)
