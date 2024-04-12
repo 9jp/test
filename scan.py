@@ -15,7 +15,9 @@ def get_dns(url):
 
 def get_registration_info(url):
     registration_info = socket.gethostbyaddr(socket.gethostbyname(url))[1]
-    return registration_info
+    domain = registration_info[0]
+    organization = registration_info[1]
+    return domain, organization
 
 def get_ip_location(ip):
     response = DbIpCity.get(ip, api_key='free')
@@ -25,10 +27,11 @@ def get_ip_location(ip):
 
 ip = get_ip(url)
 dns = get_dns(url)
-registration_info = get_registration_info(url)
+domain, organization = get_registration_info(url)
 city, country = get_ip_location(ip)
 
 print("IP Address: ", ip)
 print("DNS Name: ", dns)
-print("Registration Info: ", registration_info)
+print("Domain: ", domain)
+print("Organization: ", organization)
 print("IP Location - City: {}, Country: {}".format(city, country))
