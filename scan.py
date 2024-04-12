@@ -1,4 +1,5 @@
 import socket
+print("MJ SCAN FOR IP AND DNS ")
 
 url = input("Enter the website link: ")
 
