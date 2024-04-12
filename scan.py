@@ -1,15 +1,9 @@
 import socket
+import art
 
-print("MJ
-::::    ::::   :::::::::::
-+:+:+: :+:+:+      :+:
-+:+ +:+:+ +:+      +:+
-+#+  +:+  +#+      +#+
-+#+   MJ  +#+      +#+
-#+#       #+#  #+# #+#
-###       ###   ##### 
-My Website: m-j.sa
-My Server: Discord.gg/mJm")
+tprint("MJ")
+
+print("CODED BY MJ, My Website: m-j.sa My Server: Discord.gg/mJm")
 
 url = input("Enter the website link: ")
 
