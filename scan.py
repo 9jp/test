@@ -1,4 +1,5 @@
 import socket
+import subprocess
 from ip2geotools.databases.noncommercial import DbIpCity
 
 print("CODED BY MJ, My Website: m-j.sa My Server: Discord.gg/mJm")
@@ -8,6 +9,14 @@ url = input("Enter the website link: ")
 def get_ip(url):
     ip_address = socket.gethostbyname(url)
     return ip_address
+
+def get_subdomains(url):
+    command = f"sublist3r -d {url}"
+    try:
+        subdomains = subprocess.check_output(command, shell=True).decode('utf-8').strip().split('\n')
+    except subprocess.CalledProcessError:
+        subdomains = []
+    return subdomains if subdomains else ["N/A"]
 
 def get_dns(url):
     try:
@@ -33,11 +42,15 @@ def get_ip_location(ip):
 
 try:
     ip = get_ip(url)
+    subdomains = get_subdomains(url)
     dns = get_dns(url)
     domain, organization = get_registration_info(url)
     city, country = get_ip_location(ip)
 
     print("IP Address: ", ip)
+    print("Subdomains:")
+    for subdomain in subdomains:
+        print("   -", subdomain)
     print("DNS Name: ", dns)
     print("Domain: ", domain)
     print("Organization: ", organization)
