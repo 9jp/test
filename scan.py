@@ -72,4 +72,3 @@ try:
 
 except Exception as e:
     print("An error occurred:", e)
-    print("An error occurred:", e)
