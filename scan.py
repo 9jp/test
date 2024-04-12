@@ -1,21 +1,17 @@
 import socket
 
-def scan_website(url):
-    """Scans a website for its IP address and system name."""
+url = "example.com"
 
-    # Get the IP address of the website.
+def get_ip(url):
     ip_address = socket.gethostbyname(url)
+    return ip_address
 
-    # Get the system name of the website.
-    system_name = socket.gethostbyaddr(ip_address)[0]
+def get_dns(url):
+    dns = socket.gethostbyname_ex(url)[-1]
+    return dns
 
-    # Print the IP address and system name of the website.
-    print("IP address:", ip_address)
-    print("System name:", system_name)
+ip = get_ip(url)
+dns = get_dns(url)
 
-if __name__ == "__main__":
-    # Get the URL of the website to scan.
-    url = input("Enter the URL of the website to scan: ")
-
-    # Scan the website.
-    scan_website(url)
+print("IP Address: ", ip)
+print("DNS: ", dns)
