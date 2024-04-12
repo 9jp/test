@@ -1,5 +1,6 @@
 import socket
-print("
+
+print(" MJ
 ::::    ::::   :::::::::::
 +:+:+: :+:+:+      :+:
 +:+ +:+:+ +:+      +:+
@@ -8,7 +9,7 @@ print("
 #+#       #+#  #+# #+#
 ###       ###   ##### 
 My Website: m-j.sa
-My Server: Discord.gg/mJm ")
+My Server: Discord.gg/mJm")
 
 url = input("Enter the website link: ")
 
