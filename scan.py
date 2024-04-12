@@ -18,6 +18,18 @@ def get_subdomains(url):
         subdomains = []
     return subdomains if subdomains else ["N/A"]
 
+def scan_ports(ip):
+    open_ports = []
+    for port in range(1, 1025):  # Scan common ports 1-1024
+        try:
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                s.settimeout(0.1)
+                s.connect((ip, port))
+                open_ports.append(port)
+        except:
+            pass
+    return open_ports
+
 def get_dns(url):
     try:
         dns = socket.gethostbyaddr(socket.gethostbyname(url))[0]
@@ -43,6 +55,7 @@ def get_ip_location(ip):
 try:
     ip = get_ip(url)
     subdomains = get_subdomains(url)
+    open_ports = scan_ports(ip)
     dns = get_dns(url)
     domain, organization = get_registration_info(url)
     city, country = get_ip_location(ip)
@@ -51,10 +64,12 @@ try:
     print("Subdomains:")
     for subdomain in subdomains:
         print("   -", subdomain)
+    print("Open Ports: ", open_ports if open_ports else "No open ports found")
     print("DNS Name: ", dns)
     print("Domain: ", domain)
     print("Organization: ", organization)
     print("IP Location - City: {}, Country: {}".format(city, country))
 
 except Exception as e:
+    print("An error occurred:", e)
     print("An error occurred:", e)
