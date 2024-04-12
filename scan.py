@@ -10,14 +10,20 @@ def get_ip(url):
     return ip_address
 
 def get_dns(url):
-    dns = socket.gethostbyaddr(socket.gethostbyname(url))[0]
-    return dns
+    try:
+        dns = socket.gethostbyaddr(socket.gethostbyname(url))[0]
+        return dns
+    except socket.herror:
+        return "Unknown host"
 
 def get_registration_info(url):
-    registration_info = socket.gethostbyaddr(socket.gethostbyname(url))[1]
-    domain = registration_info[0] if len(registration_info) >= 1 else "N/A"
-    organization = registration_info[1] if len(registration_info) >= 2 else "N/A"
-    return domain, organization
+    try:
+        registration_info = socket.gethostbyaddr(socket.gethostbyname(url))[1]
+        domain = registration_info[0] if len(registration_info) >= 1 else "N/A"
+        organization = registration_info[1] if len(registration_info) >= 2 else "N/A"
+        return domain, organization
+    except socket.herror:
+        return "N/A", "N/A"
 
 def get_ip_location(ip):
     response = DbIpCity.get(ip, api_key='free')
@@ -25,13 +31,17 @@ def get_ip_location(ip):
     country = response.country
     return city, country
 
-ip = get_ip(url)
-dns = get_dns(url)
-domain, organization = get_registration_info(url)
-city, country = get_ip_location(ip)
+try:
+    ip = get_ip(url)
+    dns = get_dns(url)
+    domain, organization = get_registration_info(url)
+    city, country = get_ip_location(ip)
 
-print("IP Address: ", ip)
-print("DNS Name: ", dns)
-print("Domain: ", domain)
-print("Organization: ", organization)
-print("IP Location - City: {}, Country: {}".format(city, country))
+    print("IP Address: ", ip)
+    print("DNS Name: ", dns)
+    print("Domain: ", domain)
+    print("Organization: ", organization)
+    print("IP Location - City: {}, Country: {}".format(city, country))
+
+except Exception as e:
+    print("An error occurred:", e)
