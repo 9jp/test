@@ -15,8 +15,8 @@ def get_dns(url):
 
 def get_registration_info(url):
     registration_info = socket.gethostbyaddr(socket.gethostbyname(url))[1]
-    domain = registration_info[0]
-    organization = registration_info[1]
+    domain = registration_info[0] if len(registration_info) >= 1 else "N/A"
+    organization = registration_info[1] if len(registration_info) >= 2 else "N/A"
     return domain, organization
 
 def get_ip_location(ip):
