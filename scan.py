@@ -1,7 +1,8 @@
 import socket
 import art
 
-tprint("MJ")
+from art importn
+   tprint("MJ")
 
 print("CODED BY MJ, My Website: m-j.sa My Server: Discord.gg/mJm")
 
