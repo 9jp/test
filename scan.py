@@ -2,7 +2,7 @@ import socket
 import subprocess
 from ip2geotools.databases.noncommercial import DbIpCity
 
-print("CODED BY MJ, My Website: m-j.sa My Server: Discord.gg/mJm")
+print("CODED BY MJ, My Website: m-j.sa, My Server: Discord.gg/mJm")
 
 url = input("Enter the website link: ")
 
